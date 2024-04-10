@@ -15,6 +15,7 @@ s = 0
 game = True
 a = int(input('Плотность траффика в полосе от 1 до 5:'))
 b = int(input('Скорость траффика(1 - медленнее, 2 - быстрее, 3 - очень быстро):'))
+l = 0
 #sprite groups
 monsters = sprite.Group()
 player = sprite.Group()
@@ -36,6 +37,7 @@ class GameSprite(sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = player_x
         self.rect.y = player_y
+
     def reset(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
 #player
@@ -63,7 +65,7 @@ class Enemy(GameSprite):
               self.rect.x = randint(250, 700)
               self.speed = b
 for i in range(a):
-      monster = Enemy('mashi (2).png', 200, 200,randint(250, 700), randint(-1000, -400), b)
+      monster = Enemy('mashi_(1)-transformed.png', 125, 200,randint(300, 700), randint(-1000, -400), b)
       monster.add(monsters)
 class Enem(GameSprite):
     directio = 'up'
@@ -96,12 +98,12 @@ class En(GameSprite):
 """"""""
 #add objects
 for i in range(a):
-    monste = Enem('mashina.png', 200, 200,randint(600, 1200), randint(300, 900), b)
+    monste = Enem('mashina (1).png', 125, 250,randint(750, 1100), randint(300, 900), b)
     monst.add(monste)
-hero = Player('lb (1).png', 250, 150,1400,100,4)
+hero = Player('lb (1).png', 125, 250,1400,100,4)
 #music
 mixer.init()
-mixer.music.load('zvuk.mp3')
+mixer.music.load('bmw-zvuk-motora-s-turbinami-v8.mp3')
 mixer.music.play(loops=1000000)
 #text
 font.init()
@@ -139,15 +141,28 @@ while game:
         if key_pressed[K_ESCAPE]:
             game = False
         
-        if s == 30:
+        if s == 20 and l == 0:
             background = transform.scale(image.load('dorogaa.jpg'), (1600, 900))
-            mons = Ene('mashina.png', 200, 200,770, randint(300, 900), b)
-            group.add(mons)
-            monste.kill()
-            mos = En('mashi (2).png', 200, 200,650, randint(-100, -50), b)
+            for i in range(a):
+                mons = Ene('mashina (1).png', 125, 200,770, randint(300, 900), b)
+                group.add(mons)
+            for monste in monst:
+                monste.kill()
+            mos = En('mashi_(1)-transformed.png', 125, 200,650, randint(-100, -50), b)
             group1.add(mos)
-            monster.kill()
+            for monster in monsters:
+                monster.kill()
             s = 0
+            l += 1
+        if s == 40 and l == 1:
+            background = transform.scale(image.load('dorogaaa.jpg'), (1600, 900))
+            for i in range(a):
+                monste = Enem('mashina (1).png', 125, 250,randint(750, 1100), randint(300, 900), b)
+                monst.add(monste)
+            for i in range(a):
+                monster = Enemy('mashi_(1)-transformed.png', 125, 200,randint(300, 700), randint(-1000, -400), b)
+                monster.add(monsters)
+
     #QUIT
     for e in event.get():
         if e.type == QUIT:
