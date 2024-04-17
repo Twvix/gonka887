@@ -3,7 +3,7 @@
  # # mkdir('./system32')
  # # rmdir('./system32')
  # # sys.exit(0)
-# import
+# imports
 from pygame import *
 from random import *
 #globlal
@@ -152,7 +152,6 @@ while game:
             group1.add(mos)
             for monster in monsters:
                 monster.kill()
-            s = 0
             l += 1
         if s == 40 and l == 1:
             background = transform.scale(image.load('dorogaaa.jpg'), (1600, 900))
@@ -162,6 +161,15 @@ while game:
             for i in range(a):
                 monster = Enemy('mashi_(1)-transformed.png', 125, 200,randint(300, 700), randint(-1000, -400), b)
                 monster.add(monsters)
+            l += 1
+        if s == 60 and l == 2:
+            background = transform.scale(image.load('dorogaaaa.jpg'), (1600, 900))
+            for mos in group1:
+                mos.kill()
+            for mons in group:
+                monster.kill()
+            l += 1
+
 
     #QUIT
     for e in event.get():
