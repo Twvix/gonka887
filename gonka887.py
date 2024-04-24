@@ -18,7 +18,6 @@ b = int(input('Скорость траффика(1 - медленнее, 2 - б�
 l = 0
 #sprite groups
 monsters = sprite.Group()
-player = sprite.Group()
 monst = sprite.Group()
 group = sprite.Group()
 group1 = sprite.Group()
@@ -112,39 +111,10 @@ font2 = font.Font(None, 36)
 fi = False
 while game:
     if not fi:
-        #blit, update, draw, reset
-        window.blit(background, (0, 0))
-        hero.reset()
-        hero.update()
-        tex3 = font2.render('Ты проиграл', 1, (0, 0, 0))
-        monst.update()
-        monst.draw(window)
-        monsters.update()
-        monsters.draw(window)
-        group.update()
-        group.draw(window)
-        group1.update()
-        group1.draw(window)
-        ###################
-        bgvgv += 1
-        #time
-        if bgvgv == 60:
-            s += 1
-            bgvgv = 0
-        #collides
-        if sprite.spritecollide(hero, monsters, False):
-            fi = True
-        if sprite.spritecollide(hero, monst, False):
-            fi = True
-            window.blit(tex3, (1000, 600))
-        #EXIT
-        if key_pressed[K_ESCAPE]:
-            game = False
-        
         if s == 20 and l == 0:
             background = transform.scale(image.load('dorogaa.jpg'), (1600, 900))
             for i in range(a):
-                mons = Ene('mashina (1).png', 125, 200,770, randint(300, 900), b)
+                mons = Ene('mashina (1).png', 125, 200,800, randint(300, 900), b)
                 group.add(mons)
             for monste in monst:
                 monste.kill()
@@ -169,6 +139,54 @@ while game:
             for mons in group:
                 monster.kill()
             l += 1
+        window.blit(background, (0, 0))
+        hero.reset()
+        hero.update()
+        tex3 = font2.render('Ты проиграл', 1, (0, 0, 0))
+        monst.update()
+        monst.draw(window)
+        monsters.update()
+        monsters.draw(window)
+        group.update()
+        group.draw(window)
+        group1.update()
+        group1.draw(window)
+        ###################
+        bgvgv += 1
+        #time
+        if bgvgv == 60:
+            s += 1
+            bgvgv = 0
+        
+        #EXIT
+        if key_pressed[K_ESCAPE]:
+            game = False
+        
+            
+            
+
+        #blit, update, draw, reset
+
+        #collides
+        if sprite.spritecollide(hero, monsters, False):
+            hero = Player('lb (1) (1).png', 125, 250,hero.rect.x, hero.rect.y, 4)
+            fi = True
+            window.blit(tex3, (1000, 600))
+        if sprite.spritecollide(hero, monst, False):
+            hero = Player('lb (1) (1).png', 125, 250,hero.rect.x, hero.rect.y, 4)
+            fi = True
+            window.blit(tex3, (1000, 600))
+        if sprite.spritecollide(hero,group,False):
+            hero = Player('lb (1) (1).png', 125, 250,hero.rect.x, hero.rect.y, 4)
+            fi = True
+            window.blit(tex3, (1000, 600))
+        if sprite.spritecollide(hero, group1, False):
+            
+            hero = Player('lb (1) (1).png', 125, 250,hero.rect.x, hero.rect.y, 4)
+            fi = True
+            window.blit(tex3, (1000, 600))
+
+
 
 
     #QUIT
@@ -178,3 +196,4 @@ while game:
     #display update              
     display.update()
     clock.tick(60)
+
