@@ -6,6 +6,7 @@
 # imports
 from pygame import *
 from random import *
+import ch
 #globlal
 global bgvgv
 global s
@@ -16,6 +17,7 @@ game = True
 a = int(input('Плотность траффика в полосе от 1 до 5:'))
 b = int(input('Скорость траффика(1 - медленнее, 2 - быстрее, 3 - очень быстро):'))
 l = 0
+fg = 0
 #sprite groups
 monsters = sprite.Group()
 monst = sprite.Group()
@@ -48,7 +50,7 @@ class Player(GameSprite):
         if key_pressed[K_a]:
             self.rect.x -= self.speed
         if key_pressed[K_d]:
-              self.rect.x += self.speed
+            self.rect.x += self.speed
         if key_pressed[K_w]:
             self.rect.y -= self.speed
         if key_pressed[K_s]:
@@ -162,27 +164,26 @@ while game:
         if key_pressed[K_ESCAPE]:
             game = False
         
-            
-            
+        if key_pressed[K_d]:
+            hero = Player('lb+(1).png', 175, 250, hero.rect.x, hero.rect.y, 4)
+        elif key_pressed[K_a]:
+            hero = Player('lb+(1) (2).png', 175, 250, hero.rect.x, hero.rect.y, 4)
+        else:
+            hero = Player('lb (1).png', 125, 250, hero.rect.x, hero.rect.y, 4)
 
         #blit, update, draw, reset
 
         #collides
         if sprite.spritecollide(hero, monsters, False):
-            hero = Player('lb (1) (1).png', 125, 250,hero.rect.x, hero.rect.y, 4)
             fi = True
             window.blit(tex3, (1000, 600))
         if sprite.spritecollide(hero, monst, False):
-            hero = Player('lb (1) (1).png', 125, 250,hero.rect.x, hero.rect.y, 4)
             fi = True
             window.blit(tex3, (1000, 600))
         if sprite.spritecollide(hero,group,False):
-            hero = Player('lb (1) (1).png', 125, 250,hero.rect.x, hero.rect.y, 4)
             fi = True
             window.blit(tex3, (1000, 600))
         if sprite.spritecollide(hero, group1, False):
-            
-            hero = Player('lb (1) (1).png', 125, 250,hero.rect.x, hero.rect.y, 4)
             fi = True
             window.blit(tex3, (1000, 600))
 
@@ -196,4 +197,6 @@ while game:
     #display update              
     display.update()
     clock.tick(60)
+
+
 
