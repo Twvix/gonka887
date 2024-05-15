@@ -135,7 +135,7 @@ while game:
                 monster.add(monsters)
             l += 1
         if s == 60 and l == 2:
-            background = transform.scale(image.load('dorogaaaa.jpg'), (1600, 900))
+            background = transform.scale(image.load('dorogaaaa.png'), (1600, 900))
             for mos in group1:
                 mos.kill()
             for mons in group:
