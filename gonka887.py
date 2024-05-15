@@ -113,7 +113,7 @@ font2 = font.Font(None, 36)
 fi = False
 while game:
     if not fi:
-        if s == 20 and l == 0:
+        if s == 10 and l == 0:
             background = transform.scale(image.load('dorogaa.jpg'), (1600, 900))
             for i in range(a):
                 mons = Ene('mashina (1).png', 125, 200,800, randint(300, 900), b)
@@ -125,7 +125,7 @@ while game:
             for monster in monsters:
                 monster.kill()
             l += 1
-        if s == 40 and l == 1:
+        if s == 20 and l == 1:
             background = transform.scale(image.load('dorogaaa.jpg'), (1600, 900))
             for i in range(a):
                 monste = Enem('mashina (1).png', 125, 250,randint(750, 1100), randint(300, 900), b)
@@ -134,7 +134,7 @@ while game:
                 monster = Enemy('mashi_(1)-transformed.png', 125, 200,randint(300, 700), randint(-1000, -400), b)
                 monster.add(monsters)
             l += 1
-        if s == 60 and l == 2:
+        if s == 30 and l == 2:
             background = transform.scale(image.load('dorogaaaa.png'), (1600, 900))
             for mos in group1:
                 mos.kill()
