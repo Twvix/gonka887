@@ -8,10 +8,6 @@ display.set_caption('RUN')
 background = transform.scale(image.load('rofl.jpg'), (1600, 900))
 b = 0
 
-class GameSprite(sprite.Sprite):
-    def __init__(self, player_image, player_w, player_h, player_x, player_y):
-        super().__init__()
-        self.image = transform.scale(image.load(player_image), (player_w, player_h))
         self.rect = self.image.get_rect()
         self.rect.x = player_x
         self.rect.y = player_y
